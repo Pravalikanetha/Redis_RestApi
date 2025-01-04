@@ -46,7 +46,7 @@ public class RedisController {
 	@PostMapping("/delete")
 	public String reload() {
         redisService.delete();
-        return "list got deleted";
+        return "hello, list got deleted";
     }
 	
 	@PostMapping("/hash/{key}")
