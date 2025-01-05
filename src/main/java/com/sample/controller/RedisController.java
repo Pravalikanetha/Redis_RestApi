@@ -2,6 +2,8 @@ package com.sample.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,11 +48,23 @@ public class RedisController {
 	@PostMapping("/delete")
 	public String reload() {
         redisService.delete();
-        return "hello, list got deleted";
+        return "ok, list got deleted";
     }
 	
 	@PostMapping("/hash/{key}")
-	public void addHashEntries(@PathVariable String key, @RequestBody String value) {
-		redisService.addValueInHash(key, value);
-	}
+    public ResponseEntity<String> addHashEntry(@PathVariable String key, @RequestBody String value) {
+        redisService.addValueInHash(key, value);
+        return ResponseEntity.ok("Key-value pair added to hash successfully.");
+    }
+	
+	@GetMapping("/hash/{key}")
+    public ResponseEntity<String> getHashValue(@PathVariable String key) {
+        String value = redisService.getValueFromHash(key);
+        if (value != null) {
+            return ResponseEntity.ok(value);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Key not found.");
+        }
+    }
+	
 }
