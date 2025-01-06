@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sample.model.PaymentRequest;
 import com.sample.service.impl.PaymentService;
-import com.sample.service.interfaces.Animals;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,10 +22,9 @@ import lombok.extern.slf4j.Slf4j;
 public class PaymentController {
 	
 	private  PaymentService paymentService;
-	private Animals animals;
-	public PaymentController(PaymentService paymentService,Animals animals) {
+	public PaymentController(PaymentService paymentService) {
 		this.paymentService = paymentService;
-		this.animals=animals;
+		
 	}
 	
 	@PostMapping

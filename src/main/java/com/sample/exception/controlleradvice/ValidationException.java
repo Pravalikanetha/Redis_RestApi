@@ -1,4 +1,4 @@
-package com.sample.exception;
+package com.sample.exception.controlleradvice;
 
 import org.springframework.http.HttpStatus;
 
