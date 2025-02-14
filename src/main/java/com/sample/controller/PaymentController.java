@@ -47,6 +47,7 @@ public class PaymentController {
         String actions = paymentService.getAllAction(name);
         return ResponseEntity.ok(actions);
     }
+	
 }
 
 
