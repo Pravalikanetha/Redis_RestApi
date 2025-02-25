@@ -1,4 +1,4 @@
-package com.sample;
+package com.sample.config;
 
 import java.util.Random;
 
@@ -17,12 +17,13 @@ public class AppConfig {
 	//instead of creating new object in every class
     @Bean
     Random getRandom() {
-    	logger.info("Bean is created");
+    	logger.info("getRandom Bean is created");
 		return new Random();
 	}
     
     @Bean
     Gson getgson() {
+    	logger.info("getgson Bean is created");
     	return new Gson();
     }
 }
